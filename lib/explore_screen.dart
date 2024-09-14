@@ -16,15 +16,19 @@ final List<String> Categories = [
   'Science & Nature',
   'Sports',
   'History',
+  'Mythology',
+  'Mathematics',
   'Random'
 ];
 
 final List<String> ImageList = [
-  'https://play-lh.googleusercontent.com/7nZqAPEuWxAeckXC-lm1fWEk6pDK3mRlUCxPuLIctJ1MD9RM0HPgOdrhOwr39deWSjtn',
-  'https://cdn-icons-png.flaticon.com/512/6747/6747064.png',
-  'https://cdn-icons-png.freepik.com/256/5351/5351486.png?semt=ais_hybrid',
-  'https://cdn-icons-png.flaticon.com/512/10089/10089731.png',
-  'https://cdn-icons-png.flaticon.com/512/6662/6662916.png',
+  'https://th.bing.com/th/id/OIP.4Q1cFwCANiQ5E439vLc0QAHaGi?rs=1&pid=ImgDetMain',
+  'https://th.bing.com/th/id/OIP.Be3AwOU-tlQoOzKQnfHYJgHaE8?rs=1&pid=ImgDetMain',
+  'https://th.bing.com/th/id/OIP.dQJXy0gXF6E6j6dJON3F9gHaEi?rs=1&pid=ImgDetMain',
+  'https://th.bing.com/th/id/R.4f6d632e96cf5ba9a008d0b9968c869b?rik=%2f4mlP7Kg5MKfPg&pid=ImgRaw&r=0',
+  'https://th.bing.com/th/id/OIP.ZZmnd58o-yvzkGReXNODsQHaE6?rs=1&pid=ImgDetMain',
+  'https://th.bing.com/th/id/OIP.CX6DcaAATI9Hi8S91HFnPQHaHa?w=900&h=900&rs=1&pid=ImgDetMain',
+  'https://th.bing.com/th/id/R.dd3cdcda1a4ef4382aa6faf90f101884?rik=8V0YdfOjmc2z9w&riu=http%3a%2f%2fclipground.com%2fimages%2fcute-question-marks-clipart-8.jpg&ehk=s9508IJ6Dv5obj4yztqx6Jyv6e8%2fdHIyjOlrbhrK0p8%3d&risl=&pid=ImgRaw&r=0',
 ];
 
 class _ExploreScreenState extends State<ExploreScreen> {

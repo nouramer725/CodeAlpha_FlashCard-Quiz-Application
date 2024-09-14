@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flashcard_quiz_app/Api/modal/MythologhyModel.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -38,31 +39,19 @@ class _LearningscreenState extends State<Learningscreen> {
       'url': 'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
       'modal': 'HistoryModal',
     },
+    'Mythology': {
+      'url': 'https://opentdb.com/api.php?amount=25&category=20&difficulty=medium',
+      'modal': 'HistoryModal',
+    },
+    'Mathematics': {
+      'url': 'https://opentdb.com/api.php?amount=20&category=19&difficulty=medium&encode=url3986',
+      'modal': 'HistoryModal',
+    },
     'Random': {
       'url': 'https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple',
       'modal': 'RandomModal',
     },
-    // Arabic translations
-    'المعرفة العامة': {
-      'url': 'https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple',
-      'modal': 'GeneralKModal',
-    },
-    'العلوم والطبيعة': {
-      'url': 'https://opentdb.com/api.php?amount=50&category=17&difficulty=medium&type=multiple',
-      'modal': 'ScienceModal',
-    },
-    'الرياضة': {
-      'url': 'https://opentdb.com/api.php?amount=50&category=21&difficulty=medium&type=multiple',
-      'modal': 'SportsModal',
-    },
-    'التاريخ': {
-      'url': 'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
-      'modal': 'HistoryModal',
-    },
-    'عشوائي': {
-      'url': 'https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple',
-      'modal': 'RandomModal',
-    },
+
   };
 
   @override
@@ -118,6 +107,10 @@ class _LearningscreenState extends State<Learningscreen> {
       case 'SportsModal':
         return SportsModal.fromJson(jsonData);
       case 'HistoryModal':
+        return HistoryModal.fromJson(jsonData);
+      case 'Mythology':
+        return MythologyModel.fromJson(jsonData);
+      case 'Mathematics':
         return HistoryModal.fromJson(jsonData);
       case 'RandomModal':
         return RandomModal.fromJson(jsonData);

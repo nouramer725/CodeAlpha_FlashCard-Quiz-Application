@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flashcard_quiz_app/Api/modal/MythologhyModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as html_parser;
@@ -41,6 +42,14 @@ class _QuizScreenState extends State<QuizScreen> {
     },
     'History': {
       'url': 'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
+      'modal': 'HistoryModal',
+    },
+    'Mythology': {
+      'url': 'https://opentdb.com/api.php?amount=25&category=20&difficulty=medium',
+      'modal': 'HistoryModal',
+    },
+    'Mathematics': {
+      'url': 'https://opentdb.com/api.php?amount=20&category=19&difficulty=medium&encode=url3986',
       'modal': 'HistoryModal',
     },
     'Random': {
@@ -102,6 +111,10 @@ class _QuizScreenState extends State<QuizScreen> {
         return SportsModal.fromJson(jsonData);
       case 'HistoryModal':
         return HistoryModal.fromJson(jsonData);
+      case 'Mythology':
+        return MythologyModel.fromJson(jsonData);
+      case 'Mathematics':
+        return MythologyModel.fromJson(jsonData);
       case 'RandomModal':
         return RandomModal.fromJson(jsonData);
       default:
