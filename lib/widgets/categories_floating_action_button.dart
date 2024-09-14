@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flashcard_quiz_app/cubit/categories_cubit/cubit.dart';
 import 'package:flashcard_quiz_app/cubit/categories_cubit/states.dart';
 import 'package:flutter/material.dart';
@@ -60,14 +61,14 @@ class CategoriesFloatingActionButton extends StatelessWidget {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                labelText: 'Enter Category',
+                                labelText: 'Enter Category'.tr(),
                               ),
                               keyboardType: TextInputType.text,
                               controller: CategoriesCubit.get(context)
                                   .categoryController,
                               validator: (value) {
                                 if (value?.isEmpty ?? true) {
-                                  return 'Category must not be empty';
+                                  return 'Category must not be empty'.tr();
                                 }
                                 return null;
                               },

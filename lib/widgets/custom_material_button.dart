@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomMaterialButton extends StatelessWidget {
@@ -11,8 +12,8 @@ final void Function() onPressed;
         borderRadius: BorderRadius.circular(10),
       ),
       onPressed: onPressed,
-      child: const Text(
-        'Start Quiz',
+      child:  Text(
+        'Start Quiz'.tr(),
         style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flashcard_quiz_app/cubit/categories_cubit/cubit.dart';
 import 'package:flashcard_quiz_app/widgets/category_item.dart';
 import 'package:flashcard_quiz_app/widgets/custom_appbar.dart';
@@ -26,22 +27,22 @@ class CategoriesView extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                const Column(
+                Column(
                   children: [
-                    CustomAppBar(),
+                    const CustomAppBar(),
                      Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 40,),
-                        Icon(
+                        const SizedBox(height: 40,),
+                        const Icon(
                           Icons.category_outlined,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          'Your Categories',
-                          style: TextStyle(
+                          'Your Categories'.tr(),
+                          style: const TextStyle(
                             fontSize: 20,
                           ),
                         ),
@@ -53,9 +54,9 @@ class CategoriesView extends StatelessWidget {
                   height: 30,
                 ),
                 CategoriesCubit.get(context).categories.isEmpty
-                    ? const Center(
+                    ?  Center(
                         child: Text(
-                          'No Categories Yet',
+                          'No Categories Yet'.tr(),
                           style: TextStyle(
                             fontSize: 30,
                           ),
@@ -90,7 +91,7 @@ class CategoriesView extends StatelessWidget {
               ],
             ),
           ),
-          floatingActionButton: const CategoriesFloatingActionButton(),
+          floatingActionButton: CategoriesFloatingActionButton(),
         );
       },
       listener: (BuildContext context, Object? state) {},

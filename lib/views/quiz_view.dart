@@ -2,8 +2,8 @@ import 'package:flashcard_quiz_app/cubit/fhashcard_cubit/cubit.dart';
 import 'package:flashcard_quiz_app/views/result_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart'; // Import for localization
 import '../cubit/fhashcard_cubit/state.dart';
-
 
 class QuizView extends StatefulWidget {
   const QuizView({super.key, required this.len, required this.flashcards});
@@ -47,11 +47,11 @@ class _QuizViewState extends State<QuizView> {
     return BlocConsumer<FlashCardsCubit, FlashCardsState>(
       builder: (BuildContext context, state) {
         final flashcard = widget.flashcards[index];
-        final question = flashcard['question'] as String? ?? 'No Question';
-        final trueAnswer = flashcard['true_answer'] as String? ?? 'No Answer';
-        final falseAnswer = flashcard['false_answer'] as String? ?? 'No Answer';
-        final falseAnswer2 = flashcard['false_answer2'] as String? ?? 'No Answer';
-        final falseAnswer3 = flashcard['false_answer3'] as String? ?? 'No Answer';
+        final question = flashcard['question'] as String? ?? 'No Question'.tr();
+        final trueAnswer = flashcard['true_answer'] as String? ?? 'No Answer'.tr();
+        final falseAnswer = flashcard['false_answer'] as String? ?? 'No Answer'.tr();
+        final falseAnswer2 = flashcard['false_answer2'] as String? ?? 'No Answer'.tr();
+        final falseAnswer3 = flashcard['false_answer3'] as String? ?? 'No Answer'.tr();
 
         return Scaffold(
           appBar: AppBar(
@@ -128,7 +128,7 @@ class _QuizViewState extends State<QuizView> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            answerText,
+            answerText.tr(), // Apply localization to answer options
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

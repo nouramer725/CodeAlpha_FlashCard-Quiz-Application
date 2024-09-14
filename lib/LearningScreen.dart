@@ -9,8 +9,6 @@ import 'Api/modal/RandomModal.dart';
 import 'Api/modal/ScienceModal.dart';
 import 'Api/modal/SportsModal.dart';
 
-
-
 class Learningscreen extends StatefulWidget {
   final String category;
 
@@ -25,28 +23,44 @@ class _LearningscreenState extends State<Learningscreen> {
 
   final Map<String, Map<String, String>> _categoryInfo = {
     'General Knowledge': {
-      'url':
-          'https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple',
+      'url': 'https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple',
       'modal': 'GeneralKModal',
     },
     'Science & Nature': {
-      'url':
-          'https://opentdb.com/api.php?amount=50&category=17&difficulty=medium&type=multiple',
+      'url': 'https://opentdb.com/api.php?amount=50&category=17&difficulty=medium&type=multiple',
       'modal': 'ScienceModal',
     },
     'Sports': {
-      'url':
-          'https://opentdb.com/api.php?amount=50&category=21&difficulty=medium&type=multiple',
+      'url': 'https://opentdb.com/api.php?amount=50&category=21&difficulty=medium&type=multiple',
       'modal': 'SportsModal',
     },
     'History': {
-      'url':
-          'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
+      'url': 'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
       'modal': 'HistoryModal',
     },
     'Random': {
-      'url':
-          'https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple',
+      'url': 'https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple',
+      'modal': 'RandomModal',
+    },
+    // Arabic translations
+    'المعرفة العامة': {
+      'url': 'https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple',
+      'modal': 'GeneralKModal',
+    },
+    'العلوم والطبيعة': {
+      'url': 'https://opentdb.com/api.php?amount=50&category=17&difficulty=medium&type=multiple',
+      'modal': 'ScienceModal',
+    },
+    'الرياضة': {
+      'url': 'https://opentdb.com/api.php?amount=50&category=21&difficulty=medium&type=multiple',
+      'modal': 'SportsModal',
+    },
+    'التاريخ': {
+      'url': 'https://opentdb.com/api.php?amount=50&category=23&difficulty=medium&type=multiple',
+      'modal': 'HistoryModal',
+    },
+    'عشوائي': {
+      'url': 'https://opentdb.com/api.php?amount=50&difficulty=medium&type=multiple',
       'modal': 'RandomModal',
     },
   };
@@ -63,7 +77,8 @@ class _LearningscreenState extends State<Learningscreen> {
   }
 
   Future<dynamic> getUserData() async {
-    final categoryInfo = _categoryInfo[widget.category];
+    final categoryInfo = _categoryInfo[widget.category] ?? _categoryInfo[_translateCategory(widget.category)];
+
     if (categoryInfo == null) {
       throw Exception('Invalid category');
     }
@@ -111,12 +126,24 @@ class _LearningscreenState extends State<Learningscreen> {
     }
   }
 
+  String _translateCategory(String category) {
+    final Map<String, String> arabicToEnglish = {
+      'المعرفة العامة': 'General Knowledge',
+      'العلوم والطبيعة': 'Science & Nature',
+      'الرياضة': 'Sports',
+      'التاريخ': 'History',
+      'عشوائي': 'Random',
+    };
+
+    return arabicToEnglish[category] ?? category;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.category,
-            style: TextStyle( fontSize: 25)),
+            style: TextStyle(fontSize: 25)),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -130,8 +157,7 @@ class _LearningscreenState extends State<Learningscreen> {
             return Center(child: CircularProgressIndicator(color: Colors.purple));
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData ||
-              (snapshot.data as dynamic).results == null) {
+          } else if (!snapshot.hasData || (snapshot.data as dynamic).results == null) {
             return Center(child: Text('No data available'));
           } else {
             final results = (snapshot.data as dynamic).results!;
@@ -146,8 +172,7 @@ class _LearningscreenState extends State<Learningscreen> {
                     front: Card(
                       color: Colors.purple[200],
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -162,8 +187,7 @@ class _LearningscreenState extends State<Learningscreen> {
                     back: Card(
                       color: Colors.purple,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

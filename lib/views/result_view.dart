@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ResultView extends StatelessWidget {
   const ResultView({super.key, required this.result, required this.total});
@@ -14,9 +15,9 @@ class ResultView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Result :',
-              style: TextStyle(fontSize: 40),
+            Text(
+              'result Label'.tr(), // Using .tr() for localization
+              style: const TextStyle(fontSize: 40),
             ),
             const SizedBox(height: 20),
             Text(
@@ -33,13 +34,13 @@ class ResultView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               onPressed: () {
-                for(int i = 0; i < 3; i++){
+                for (int i = 0; i < 3; i++) {
                   Navigator.pop(context);
                 }
               },
-              child: const Text(
-                'Back to Home',
-                style: TextStyle(
+              child: Text(
+                'back To Home'.tr(), // Using .tr() for localization
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 32,

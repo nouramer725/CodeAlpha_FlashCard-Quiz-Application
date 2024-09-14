@@ -1,6 +1,7 @@
 import 'package:flashcard_quiz_app/Settings/Settings.dart';
 import 'package:flashcard_quiz_app/views/categories_view.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart'; // Add this import
 import 'explore_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
@@ -36,14 +37,14 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         title: Row(
           children: [
             Text(
-              ' Topics To',
+              'topics_to'.tr(), // Key for 'Topics To'
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              ' Explore',
+              'explore'.tr(), // Key for 'Explore'
               style: TextStyle(
                 color: Colors.purple[200],
                 fontSize: 30,
@@ -66,20 +67,19 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.explore_outlined),
-                label: 'Explore',
+                label: 'explore'.tr(), // Key for 'Explore'
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.card_membership_outlined),
-                label: 'Flashcards',
+                label: 'flashcards'.tr(), // Key for 'Flashcards'
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'Settings',
+                label: 'settings'.tr(), // Key for 'Settings'
               ),
             ],
             currentIndex: _selectedIndex,
-
-            onTap: changeBottom ,
+            onTap: changeBottom,
             selectedIconTheme: IconThemeData(
               size: 32.0, // Increase size of selected icon
             ),

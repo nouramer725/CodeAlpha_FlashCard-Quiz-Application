@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:easy_localization/easy_localization.dart'; // Add this for localization
 import 'LocaleProvider.dart';
 import 'ThemeProvider.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // For storing preferences
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
+
+  // Function to save the selected language in SharedPreferences
+  Future<void> _saveLocale(Locale locale) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('locale', locale.languageCode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('settings'.tr()), // Use .tr() for translations
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -22,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
           // Dark/Light Mode
           ListTile(
             leading: const Icon(Icons.brightness_6),
-            title: const Text('Theme Mode'),
+            title: Text('theme_mode'.tr()), // Translatable text
             trailing: Switch(
               value: themeProvider.themeMode == ThemeMode.dark,
               onChanged: (value) {
@@ -35,17 +42,22 @@ class SettingsScreen extends StatelessWidget {
           // Switch Language
           ListTile(
             leading: const Icon(Icons.language),
-            title: const Text('Language'),
+            title: Text('language'.tr()), // Translatable text
             trailing: DropdownButton<Locale>(
-              value: localeProvider.locale,
-              onChanged: (locale) {
+              value: localeProvider.locale, // Get the current locale
+              onChanged: (Locale? locale) async {
                 if (locale != null) {
-                  localeProvider.setLocale(locale);
+                  await _saveLocale(locale); // Save the selected locale in preferences
+                  context.setLocale(locale); // Update the app's locale
+                  localeProvider.setLocale(locale); // Also update LocaleProvider
                 }
               },
               items: const [
                 DropdownMenuItem(value: Locale('en'), child: Text('English')),
-                DropdownMenuItem(value: Locale('ar'), child: Text('Arabic')), // Add more languages as needed
+                DropdownMenuItem(value: Locale('ar'), child: Text('العربية')),
+                DropdownMenuItem(value: Locale('fr'), child: Text('French')),
+
+                // Add more languages as needed
               ],
             ),
           ),
@@ -54,15 +66,15 @@ class SettingsScreen extends StatelessWidget {
           // About App
           ListTile(
             leading: const Icon(Icons.info),
-            title: const Text('About App'),
+            title: Text('about_app'.tr()), // Translatable text
             onTap: () {
               showAboutDialog(
                 context: context,
                 applicationName: 'Flashcard Quiz App',
                 applicationVersion: '1.0.0',
                 applicationIcon: const Icon(Icons.info),
-                children: const [
-                  Text('This app helps you study with flashcards.'),
+                children: [
+                  Text('about_description'.tr()), // Translatable description
                 ],
               );
             },

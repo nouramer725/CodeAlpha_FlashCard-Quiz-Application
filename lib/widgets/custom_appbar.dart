@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -12,82 +13,18 @@ class CustomAppBar extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                ' F',
+                'FlashCard'.tr(), // Key for 'QUIZ'
                 style: TextStyle(
-                  color: Colors.redAccent[200],
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'L',
-                style: TextStyle(
-                  color: Colors.green[300],
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'A',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow[300],
-                ),
-              ),
-              const Text(
-                'S',
-                style: TextStyle(
-                  color: Colors.lightBlueAccent,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'H',
-                style: TextStyle(
-                  color: Colors.yellow[300],
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'C',
-                style: TextStyle(
-                  color: Colors.green[300],
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'A',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow[300],
-                ),
-              ),
-              const Text(
-                'R',
-                style: TextStyle(
-                  color: Colors.lightBlueAccent,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'D',
-                style: TextStyle(
-                  color: Colors.yellow[300],
+                  color: Colors.red[300],
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(
-                width: 30,
+                width: 10,
               ),
               Text(
-                'QUIZ',
+                'quiz'.tr(), // Key for 'QUIZ'
                 style: TextStyle(
                   color: Colors.red[300],
                   fontSize: 30,

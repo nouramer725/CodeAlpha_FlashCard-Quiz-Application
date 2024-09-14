@@ -6,27 +6,30 @@ import 'package:flashcard_quiz_app/widgets/flashcard_floating_action_button.dart
 import 'package:flashcard_quiz_app/widgets/flashcards_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart'; // Import for localization
 
 class CategoryPageView extends StatelessWidget {
   const CategoryPageView({super.key, required this.category});
-final String category;
+  final String category;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FlashCardsCubit, FlashCardsState>(
       builder: (BuildContext context, FlashCardsState state) {
-        int len=0;
+        int len = 0;
         List<Map> flashcards = [];
-        for(int i = 0; i < FlashCardsCubit.get(context).flashcards.length; i++){
-          if(FlashCardsCubit.get(context).flashcards[i]['category'] == category){
+        for (int i = 0; i < FlashCardsCubit.get(context).flashcards.length; i++) {
+          if (FlashCardsCubit.get(context).flashcards[i]['category'] == category) {
             flashcards.add(FlashCardsCubit.get(context).flashcards[i]);
             len++;
           }
         }
+
         return Scaffold(
           key: FlashCardsCubit.get(context).scaffoldKey,
           appBar: AppBar(
             title: Text(
-              category,
+              category.tr(), // Localization key for category
             ),
           ),
           body: SingleChildScrollView(
@@ -37,16 +40,18 @@ final String category;
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    '$len flashcards',
+                    '${len.toString()} ${'flashcards'.tr()}', // Convert int to String and apply tr()
                     style: TextStyle(
                       fontSize: 30,
                       color: Colors.purple[300],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  len==0?const SizedBox(
+                  len == 0
+                      ? const SizedBox(
                     height: 60,
-                  ):const SizedBox(
+                  )
+                      : const SizedBox(
                     height: 30,
                   ),
                   const Center(
@@ -55,9 +60,21 @@ final String category;
                   const SizedBox(
                     height: 50,
                   ),
-                  len==0?const SizedBox(): CustomMaterialButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> QuizView(len: len, flashcards: flashcards,)));
-                  },),
+                  len == 0
+                      ? const SizedBox()
+                      : CustomMaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuizView(
+                            len: len,
+                            flashcards: flashcards,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -65,7 +82,7 @@ final String category;
           floatingActionButton: FlashCardFloatingActionButton(category: category),
         );
       },
-      listener: (BuildContext context, FlashCardsState state) {  },
+      listener: (BuildContext context, FlashCardsState state) {},
     );
   }
 }
