@@ -13,7 +13,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   Future<void> createDatabase() async {
     database = await openDatabase(
-        'quiz.db', version: 3,
+        'quizz.db', version: 3,
         onCreate: (Database db, int version) async {
           await db
               .execute(
